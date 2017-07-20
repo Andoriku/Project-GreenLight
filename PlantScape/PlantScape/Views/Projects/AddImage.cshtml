@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "AddImage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddImage</h2>
+@using (Html.BeginForm("AddImage", "Projects", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <br />
+    <input type="file" name="file" />
+    <br />
+    <input type="hidden" id="myfield" value=""/>
+
+    <input class="new" type="submit" value="OK" />
+}
+
+<script type="text/javascript">
+    function pathName(){
+        var url = window.location.pathname;
+        var id = url.substring(url.lastIndexOf('/') + 1);
+        return id;
+    }
+    document.getElementById('myField').value = pathName();
+</script>

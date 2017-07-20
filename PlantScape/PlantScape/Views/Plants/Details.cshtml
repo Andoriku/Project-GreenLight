@@ -1,0 +1,91 @@
+﻿@model PlantScape.Models.PlantViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PlantViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.botanicalName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.botanicalName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.commonName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.commonName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fColorSpring)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fColorSpring)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fColorFall)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fColorFall)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.leafType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.leafType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hardinessZone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hardinessZone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soilType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soilType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lightReq)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lightReq)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
