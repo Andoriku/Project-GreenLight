@@ -1,0 +1,43 @@
+﻿@model IEnumerable<PlantScape.Models.Projects>
+@{
+    ViewBag.Title = "Projects";
+    Layout = "~/Views/Shared/_Layout - Developer.cshtml";
+}
+
+<h2>Projects</h2>
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create","Projects")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.projectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.image)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.projectName)
+            </td>
+            <td>
+                <img src="@Html.DisplayFor(modelItem => item.displayImage)" alt="No Image" style="width : 20%; height: 20%" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Add Image", "AddImage", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>

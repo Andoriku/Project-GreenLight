@@ -28,7 +28,7 @@ namespace PlantScape.Controllers
             if (file != null && file.ContentLength > 0)
             {
                 var fileName = Path.GetFileName(file.FileName);
-                path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+                path = Path.Combine(Server.MapPath("~/Content/uploads"), fileName);
                 file.SaveAs(path);
             }
             using (StreamReader reader = new StreamReader(path))

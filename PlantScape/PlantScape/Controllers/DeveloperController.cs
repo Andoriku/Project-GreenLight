@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlantScape.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,12 +9,22 @@ namespace PlantScape.Controllers
 {
     public class DeveloperController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Developer
         public ActionResult Index()
         {
             return View();
         }
+        public ActionResult Projects()
+        {
 
+            return View(db.Projects.ToList());
+        }
+        public ActionResult Browse()
+        {
+
+            return View(db.Plants.ToList());
+        }
         // GET: Developer/Details/5
         public ActionResult Details(int id)
         {

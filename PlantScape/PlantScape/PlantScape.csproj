@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.2.16.3.0\lib\net45\CsvHelper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -208,6 +212,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\DeveloperController.cs" />
+    <Compile Include="Controllers\ZoneController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PlantsController.cs" />
@@ -235,10 +240,6 @@
     <Compile Include="Migrations\201707192023116_flowers.Designer.cs">
       <DependentUpon>201707192023116_flowers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201707192154308_Zone.cs" />
-    <Compile Include="Migrations\201707192154308_Zone.Designer.cs">
-      <DependentUpon>201707192154308_Zone.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201707201253112_Favorite.cs" />
     <Compile Include="Migrations\201707201253112_Favorite.Designer.cs">
       <DependentUpon>201707201253112_Favorite.cs</DependentUpon>
@@ -247,9 +248,13 @@
     <Compile Include="Migrations\201707201604119_displayimage.Designer.cs">
       <DependentUpon>201707201604119_displayimage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707211727483_Zone.cs" />
+    <Compile Include="Migrations\201707211727483_Zone.Designer.cs">
+      <DependentUpon>201707211727483_Zone.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\HardinessZone.cs" />
+    <Compile Include="Models\Zone.cs" />
     <Compile Include="Models\Plants.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -269,6 +274,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\usda2012ND.csv" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -332,10 +338,12 @@
     <Content Include="Views\Shared\_Layout - Client.cshtml" />
     <Content Include="Views\Developer\Browse.cshtml" />
     <Content Include="Views\Client\Browse.cshtml" />
+    <Content Include="Views\Developer\Projects.cshtml" />
+    <Content Include="Views\Client\Projects.cshtml" />
+    <Content Include="Views\Zone\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Zone\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -361,14 +369,14 @@
     <EmbeddedResource Include="Migrations\201707192023116_flowers.resx">
       <DependentUpon>201707192023116_flowers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707192154308_Zone.resx">
-      <DependentUpon>201707192154308_Zone.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707201253112_Favorite.resx">
       <DependentUpon>201707201253112_Favorite.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707201604119_displayimage.resx">
       <DependentUpon>201707201604119_displayimage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707211727483_Zone.resx">
+      <DependentUpon>201707211727483_Zone.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -19,6 +19,10 @@ namespace PlantScape.Controllers
         {
             return View(db.Plants.ToList());
         }
+        public ActionResult Projects()
+        {
+            return View(db.Projects.ToList());
+        }
         // GET: Customer/Details/5
         public ActionResult Details(int id)
         {

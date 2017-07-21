@@ -86,7 +86,7 @@ namespace PlantScape.Controllers
             }
             if (path != "")
             {
-                string newPath = "../../" + MakeRelative(path, "c:\\users\\andrew jordan\\documents\\visual studio 2015\\Projects\\PlantScape\\PlantScape\\");
+                string newPath = "../../" + MakeRelative(path, "c:\\users\\Andrew Jordan\\Desktop\\Project-GreenLight\\PlantScape\\PlantScape\\");
                 projects.displayImage = newPath;
                 byte[] b = GetBytesFromImage(path);
                 projects.id = id;

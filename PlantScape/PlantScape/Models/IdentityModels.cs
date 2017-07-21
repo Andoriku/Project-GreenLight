@@ -41,7 +41,7 @@ namespace PlantScape.Models
     {
         public DbSet<Plants> Plants { get; set; }
         public DbSet<Projects> Projects { get; set; }
-        public DbSet<HardinessZone> HardinessZone { get; set; }
+        public DbSet<Zone> HardinessZone { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
