@@ -25,6 +25,7 @@ namespace PlantScape.Controllers
                 _userManager = value;
             }
         }
+        
         // GET: Customer
         public ActionResult Index()
         {

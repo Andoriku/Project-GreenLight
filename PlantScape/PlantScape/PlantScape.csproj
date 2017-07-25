@@ -306,6 +306,7 @@
     <Content Include="Content\usda2012ND.csv" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\ProjectsView\ViewQuotes.cshtml" />
     <None Include="Views\Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Views\Scripts\jquery-1.10.2.js" />
     <Content Include="Views\Scripts\jquery-1.10.2.min.js" />
@@ -378,7 +379,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ProjectView\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
