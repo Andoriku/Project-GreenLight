@@ -55,7 +55,7 @@ namespace PlantScape.Controllers
         // GET: Developer/Details/5
         public ActionResult Details(int id)
         {
-            return View("Details","Plants");
+            return View("Details", "Plants");
         }
         public ActionResult SearchView()
         {
@@ -63,9 +63,46 @@ namespace PlantScape.Controllers
         }
         public ActionResult SearchBy()//<===pass in the argument they want to search by and the input string
         {
-            List<Plants> PlantsResult = new List<Plants>();
+            List<Plants> searchResult = new List<Plants>();
+            foreach(Plants plant in db.Plants)
+            {
+                
+            }
 
-            return View(PlantsResult);
+            return View(searchResult);
+        }
+     public ActionResult AddToFavorites(int id)
+        {
+            Plants plants = db.Plants.Find(id);
+            return View(plants);
+        }
+        [HttpPost]
+        public ActionResult AddToFavorites([Bind(Include = "id")] Plants search)
+        {
+            ApplicationUser user = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
+            Plants plant = db.Plants.FirstOrDefault(Plant => Plant.id == search.id);
+            db.Plants.Attach(plant);
+            user.favoriteList.Add(plant);
+            db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Browse");
+        }
+        public ActionResult ViewFavorites()
+        {
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            string searchId = user.Id;
+            try
+            {
+                var query = from plant in db.Plants
+                            where plant.favoriteList.Any(faveuser => faveuser.Id == searchId)
+                            select plant;
+                return View(query);
+            }
+            catch
+            {
+                return RedirectToAction("Index");
+            }
+           
         }
         // GET: Developer/Create
         public ActionResult Create()

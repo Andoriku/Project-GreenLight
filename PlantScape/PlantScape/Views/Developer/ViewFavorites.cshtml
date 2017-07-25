@@ -1,0 +1,93 @@
+﻿@using PlantScape.Models
+@model IQueryable<Plants>
+
+@{
+    ViewBag.Title = "ViewFavorites";
+    Layout = "~/Views/Shared/_Layout - Developer.cshtml";
+}
+
+<h2>ViewFavorites</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Image
+        </th>
+        <th>
+            Botanical Name
+        </th>
+        <th>
+            Common Name
+        </th>
+        <th>
+            Type
+        </th>
+        <th>
+            Foliage Color (Spring)
+        </th>
+        <th>
+            Foliage Color (Fall)
+        </th>
+        <th>
+            Leaf Type
+        </th>
+        <th>
+            Flowers
+        </th>
+        <th>
+            Hardiness Zone*
+        </th>
+        <th>
+            Soil Type
+        </th>
+        <th>
+            Light Requirements
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@Html.DisplayFor(modelItem => item.imageUrl)" alt="No Image" style="width : 100%; height: 20%" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.botanicalName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.commonName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fColorSpring)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fColorFall)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.flowers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.leafType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hardinessZone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soilType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lightReq)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Plants", new { id = item.id }, new { }) |
+                @Html.ActionLink("Details", "Details", "Plants", new { id = item.id }, new { }) |
+                @Html.ActionLink("Delete", "Delete", "Plants", new { id = item.id }, new { })
+            </td>
+        </tr>
+    }
+
+</table>
