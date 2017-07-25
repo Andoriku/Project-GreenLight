@@ -19,10 +19,8 @@ namespace PlantScape.Models
         public string projectName { get; set; }
         public Byte[] image { get; set; }
         public string displayImage { get; set; }
-        public List<int> numberOfEach { get; set; }
-        public virtual ApplicationUser requester { get; set; }
-        public virtual ApplicationUser developer { get; set; }
+        public virtual string reqId { get; set; }
+        public virtual string devId { get; set; }
         public virtual ICollection<Plants> plantList { get; set; }
-
     }
 }

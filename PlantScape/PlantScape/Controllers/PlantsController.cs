@@ -91,16 +91,16 @@ namespace PlantScape.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,botanicalName,commonName,type,fColorSpring,fColorFall,leafType,hardinessZone,soilType,lightReq")] Plants plantViewModel)
+        public ActionResult Create([Bind(Include = "id,botanicalName,commonName,type,fColorSpring,fColorFall,leafType,hardinessZone,soilType,lightReq")] Plants plant)
         {
             if (ModelState.IsValid)
             {
-                db.Plants.Add(plantViewModel);
+                db.Plants.Add(plant);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(plantViewModel);
+            return View(plant);
         }
 
         // GET: PlantViewModels/Edit/5
@@ -110,12 +110,12 @@ namespace PlantScape.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Plants plantViewModel = db.Plants.Find(id);
-            if (plantViewModel == null)
+            Plants plant = db.Plants.Find(id);
+            if (plant == null)
             {
                 return HttpNotFound();
             }
-            return View(plantViewModel);
+            return View(plant);
         }
 
         // POST: PlantViewModels/Edit/5
@@ -123,17 +123,17 @@ namespace PlantScape.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,botanicalName,commonName,type,fColorSpring,fColorFall,leafType,hardinessZone,soilType,lightReq")] Plants plantViewModel)
+        public ActionResult Edit([Bind(Include = "id,botanicalName,commonName,type,fColorSpring,fColorFall,leafType,hardinessZone,soilType,lightReq")] Plants plant)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(plantViewModel).State = EntityState.Modified;
+                db.Entry(plant).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(plantViewModel);
+            return View(plant);
         }
-
+         
         // GET: PlantViewModels/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -141,12 +141,12 @@ namespace PlantScape.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Plants plantViewModel = db.Plants.Find(id);
-            if (plantViewModel == null)
+            Plants plant = db.Plants.Find(id);
+            if (plant == null)
             {
                 return HttpNotFound();
             }
-            return View(plantViewModel);
+            return View(plant);
         }
 
         // POST: PlantViewModels/Delete/5

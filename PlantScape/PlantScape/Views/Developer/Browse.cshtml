@@ -94,9 +94,9 @@
                 @Html.DisplayFor(modelItem => item.lightReq)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                @Html.ActionLink("Edit", "Edit", "Plants", new { id = item.id }, new { }) |
+                @Html.ActionLink("Details", "Details", "Plants", new { id = item.id }, new { }) |
+                @Html.ActionLink("Delete", "Delete", "Plants", new { id = item.id }, new { })
             </td>
         </tr>
     }

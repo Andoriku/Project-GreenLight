@@ -212,6 +212,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\DeveloperController.cs" />
+    <Compile Include="Controllers\ProjectsViewController.cs" />
     <Compile Include="Controllers\ZoneController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -220,40 +221,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201707190049004_Added user items.cs" />
-    <Compile Include="Migrations\201707190049004_Added user items.Designer.cs">
-      <DependentUpon>201707190049004_Added user items.cs</DependentUpon>
+    <Compile Include="Migrations\201707241417437_newtables.cs" />
+    <Compile Include="Migrations\201707241417437_newtables.Designer.cs">
+      <DependentUpon>201707241417437_newtables.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201707191415234_plants.cs" />
-    <Compile Include="Migrations\201707191415234_plants.Designer.cs">
-      <DependentUpon>201707191415234_plants.cs</DependentUpon>
+    <Compile Include="Migrations\201707241656169_lostlist.cs" />
+    <Compile Include="Migrations\201707241656169_lostlist.Designer.cs">
+      <DependentUpon>201707241656169_lostlist.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201707191424329_plantit.cs" />
-    <Compile Include="Migrations\201707191424329_plantit.Designer.cs">
-      <DependentUpon>201707191424329_plantit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707191548023_projects.cs" />
-    <Compile Include="Migrations\201707191548023_projects.Designer.cs">
-      <DependentUpon>201707191548023_projects.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707192023116_flowers.cs" />
-    <Compile Include="Migrations\201707192023116_flowers.Designer.cs">
-      <DependentUpon>201707192023116_flowers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707201253112_Favorite.cs" />
-    <Compile Include="Migrations\201707201253112_Favorite.Designer.cs">
-      <DependentUpon>201707201253112_Favorite.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707201604119_displayimage.cs" />
-    <Compile Include="Migrations\201707201604119_displayimage.Designer.cs">
-      <DependentUpon>201707201604119_displayimage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707211727483_Zone.cs" />
-    <Compile Include="Migrations\201707211727483_Zone.Designer.cs">
-      <DependentUpon>201707211727483_Zone.cs</DependentUpon>
+    <Compile Include="Migrations\201707242051492_IsSelected.cs" />
+    <Compile Include="Migrations\201707242051492_IsSelected.Designer.cs">
+      <DependentUpon>201707242051492_IsSelected.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ProjectsViewModel.cs" />
     <Compile Include="Models\Zone.cs" />
     <Compile Include="Models\Plants.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -339,11 +321,12 @@
     <Content Include="Views\Developer\Browse.cshtml" />
     <Content Include="Views\Client\Browse.cshtml" />
     <Content Include="Views\Developer\Projects.cshtml" />
-    <Content Include="Views\Client\Projects.cshtml" />
+    <Content Include="Views\Client\CreateProject.cshtml" />
     <Content Include="Views\Zone\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ProjectView\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -354,29 +337,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201707190049004_Added user items.resx">
-      <DependentUpon>201707190049004_Added user items.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201707241417437_newtables.resx">
+      <DependentUpon>201707241417437_newtables.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707191415234_plants.resx">
-      <DependentUpon>201707191415234_plants.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201707241656169_lostlist.resx">
+      <DependentUpon>201707241656169_lostlist.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707191424329_plantit.resx">
-      <DependentUpon>201707191424329_plantit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707191548023_projects.resx">
-      <DependentUpon>201707191548023_projects.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707192023116_flowers.resx">
-      <DependentUpon>201707192023116_flowers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707201253112_Favorite.resx">
-      <DependentUpon>201707201253112_Favorite.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707201604119_displayimage.resx">
-      <DependentUpon>201707201604119_displayimage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707211727483_Zone.resx">
-      <DependentUpon>201707211727483_Zone.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201707242051492_IsSelected.resx">
+      <DependentUpon>201707242051492_IsSelected.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

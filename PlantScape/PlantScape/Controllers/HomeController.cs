@@ -27,25 +27,36 @@ namespace PlantScape.Controllers
             {
                 return RedirectToAction("Index", "Developer");
             }
-            else
+            else if (roll == "Client")
             {
                 return RedirectToAction("Index", "Client");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
             }
         }
         public string GetRole()
         {
-
             string role = null;
-            if (User.Identity.IsAuthenticated)
+            try
             {
-                ApplicationDbContext context = new ApplicationDbContext();
-                var user = User.Identity;
-                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-                var s = UserManager.GetRoles(user.GetUserId());
-                role = s[0].ToString();
+                
+                if (User.Identity.IsAuthenticated)
+                {
+                    ApplicationDbContext context = new ApplicationDbContext();
+                    var user = User.Identity;
+                    var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+                    var s = UserManager.GetRoles(user.GetUserId());
+                    role = s[0].ToString();
+                }
+                return role;
             }
-            return role;
-
+            catch
+            {
+                role = "No One";
+                return role;
+            }
         }
         public ActionResult About()
         {

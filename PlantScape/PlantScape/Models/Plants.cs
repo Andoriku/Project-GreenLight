@@ -45,5 +45,6 @@ namespace PlantScape.Models
         public string imageUrl { get; set; }
         public virtual ICollection<Projects> projectList { get; set; }
         public virtual ICollection<ApplicationUser> favoriteList { get; set; }
+        public bool isSelected { get; set; }
     }
 }

@@ -52,6 +52,7 @@ namespace PlantScape.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,projectName,image")] Projects projects)
         {
+            
             if (ModelState.IsValid)
             {
                 db.Projects.Add(projects);
@@ -66,6 +67,7 @@ namespace PlantScape.Controllers
             Projects projects = db.Projects.Find(id);
             return View(projects);
         }
+      
         [HttpPost]
         public ActionResult AddImage([Bind(Include = "id,projectName,image")] int id, HttpPostedFileBase file)
         {
@@ -120,6 +122,7 @@ namespace PlantScape.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Projects projects = db.Projects.Find(id);
+            
             if (projects == null)
             {
                 return HttpNotFound();

@@ -1,4 +1,6 @@
-﻿using PlantScape.Models;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using PlantScape.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +11,19 @@ namespace PlantScape.Controllers
 {
     public class DeveloperController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
         // GET: Developer
         public ActionResult Index()
         {
@@ -17,8 +31,21 @@ namespace PlantScape.Controllers
         }
         public ActionResult Projects()
         {
-
-            return View(db.Projects.ToList());
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            string searchId = user.Id;
+            List<Projects> projects = new List<Projects>();
+            foreach (var project in db.Projects)
+            {
+                if (searchId == project.devId)
+                {
+                    projects.Add(project);
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            return View(projects);
         }
         public ActionResult Browse()
         {
@@ -28,9 +55,18 @@ namespace PlantScape.Controllers
         // GET: Developer/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View("Details","Plants");
         }
+        public ActionResult SearchView()
+        {
+            return View(db.Plants.All(item => item.botanicalName != null));
+        }
+        public ActionResult SearchBy()//<===pass in the argument they want to search by and the input string
+        {
+            List<Plants> PlantsResult = new List<Plants>();
 
+            return View(PlantsResult);
+        }
         // GET: Developer/Create
         public ActionResult Create()
         {

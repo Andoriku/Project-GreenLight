@@ -1,0 +1,50 @@
+﻿@model PlantScape.Models.Projects
+
+@{
+    ViewBag.Title = "CreateProjects";
+    Layout = "~/Views/Shared/_Layout - Client.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm("CreateProject","Client"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Projects</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.projectName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.projectName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.projectName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+         <label class = "control-label col-md-2">Developer Code*</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.devId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.devId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Request Quote" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Porfile", "Index")
+</div>
+<br />
+<div>
+    <p>* If you do not have a developer code, please contact your developer for that information.</p>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
