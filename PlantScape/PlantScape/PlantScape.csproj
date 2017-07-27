@@ -258,6 +258,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ProjectsViewModel.cs" />
+    <Compile Include="Models\ProjectViewModel.cs" />
     <Compile Include="Models\Zone.cs" />
     <Compile Include="Models\Plants.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -307,6 +308,8 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\ProjectsView\ViewQuotes.cshtml" />
+    <Content Include="Views\Developer\ProjectPlants.cshtml" />
+    <Content Include="Views\Developer\AddPlants.cshtml" />
     <None Include="Views\Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Views\Scripts\jquery-1.10.2.js" />
     <Content Include="Views\Scripts\jquery-1.10.2.min.js" />

@@ -52,7 +52,7 @@ namespace PlantScape.Controllers
        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateProject([Bind(Include = "projectName,devId")] Projects projects)
+        public ActionResult CreateProject([Bind(Include = "projectName,devId,userComments")] Projects projects)
         {
 
             if (ModelState.IsValid)

@@ -8,7 +8,7 @@ namespace PlantScape.Models
     public class ProjectsViewModel
     {
         public IEnumerable<Projects> Projects { get; set; }
-        public IEnumerable<Plants> Plants { get; set; }
+        public IQueryable<Plants> Plants { get; set; }
 
     }
 }

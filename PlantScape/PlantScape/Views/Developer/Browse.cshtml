@@ -18,11 +18,14 @@
     <input type="file" name="file" />
     <input type="submit" value="OK" />
 }
+<p>
+    @Html.ActionLink("Search for specific plants", "SearchView")
+</p>
 <br />
 <table class="table">
     <tr>
         <th>
-           Image
+            Image
         </th>
         <th>
             Botanical Name
@@ -40,19 +43,19 @@
             Foliage Color (Fall)
         </th>
         <th>
-           Leaf Type
+            Leaf Type
         </th>
         <th>
-           Flowers
+            Flowers
         </th>
         <th>
-         Hardiness Zone*
+            Hardiness Zone*
         </th>
         <th>
-          Soil Type
+            Soil Type
         </th>
         <th>
-           Light Requirements
+            Light Requirements
         </th>
         <th>
             <lable>Add To Favorites</lable>
@@ -97,7 +100,7 @@
                 @Html.DisplayFor(modelItem => item.lightReq)
             </td>
             <td>
-                @Html.ActionLink("Add", "AddToFavorites", "Developer", new { id = item.id}, new { })
+                @Html.ActionLink("Add", "AddToFavorites", "Developer", new { id = item.id }, new { })
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", "Plants", new { id = item.id }, new { }) |

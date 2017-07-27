@@ -29,24 +29,17 @@ namespace PlantScape.Controllers
         {
             ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
             string searchId = user.Id;
+            List<ProjectsViewModel> projectList = new List<ProjectsViewModel>();
             ProjectsViewModel projects = new ProjectsViewModel();
-            projects.Projects = GetProjects();
-            foreach (var project in projects.Projects)
-            {
-                project.plantList = GetPlants();
-            }
-
-
-
-            return View(projects);
+            projects.Projects = GetProjects(searchId);
+            projectList.Add(projects);
+            return View(projectList);
         }
 
-        private List<Projects> GetProjects()
+        private List<Projects> GetProjects(string searchId)
         {
             List<Projects> projectList = new List<Projects>();
-            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
-            string searchId = user.Id;
-            foreach (var project in db.Projects)
+            foreach (Projects project in db.Projects.Where(p => p.reqId == searchId))
             {
                 if (searchId == project.reqId)
                 {
@@ -59,9 +52,19 @@ namespace PlantScape.Controllers
             }
             return projectList;
         }
-        private List<Plants> GetPlants()
+        private List<Plants> GetPlants(Projects project)
         {
             List<Plants> plantList = new List<Plants>();
+            ApplicationUser user = db.Users.FirstOrDefault(u => u.Id == project.reqId);
+            int searchzip = user.zipCode;
+            Zone zone = db.HardinessZone.FirstOrDefault(z => z.zipcode == searchzip);
+           foreach(Plants plant in db.Plants)
+            {
+                if(zone.zone == plant.hardinessZone)
+                {
+                    plantList.Add(plant);
+                }
+            }
             return plantList;
         }
 

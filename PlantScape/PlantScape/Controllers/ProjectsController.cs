@@ -50,7 +50,7 @@ namespace PlantScape.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,projectName,image")] Projects projects)
+        public ActionResult Create([Bind(Include = "id,projectName,image,userComments")] Projects projects)
         {
             
             if (ModelState.IsValid)
@@ -98,7 +98,7 @@ namespace PlantScape.Controllers
                 
             }
 
-            return View("Index", db.Projects.ToList());
+            return RedirectToAction("Projects","Developer");
         }
         public static string MakeRelative(string filePath,string referencePath)
         {

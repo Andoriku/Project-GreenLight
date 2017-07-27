@@ -1,4 +1,5 @@
-﻿@model PlantScape.Models.ProjectsViewModel
+﻿@using PlantScape.Models
+@model IEnumerable<PlantScape.Models.ProjectsViewModel>
 
 @{
     ViewBag.Title = "ViewQuotes";
@@ -14,19 +15,22 @@
         </th>
         <th>
           <lable>Your Design Drawing</lable>
-        </th>
+        </th> 
         <th></th>
     </tr>
 
-    @foreach (var item in Model.Projects)
+    @foreach (var model in Model)
     {
+        foreach (var project in model.Projects)
+        { 
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.projectName)
+                @Html.DisplayFor(modelItem => project.projectName)
             </td>
             <td>
-                <img src="@Html.DisplayFor(modelItem => item.displayImage)" alt="No Image" style="width : 20%; height: 20%" />
+                <img src="@Html.DisplayFor(modelItem => project.displayImage)" alt="No Image" style="width : 20%; height: 20%" />
             </td>
 </tr>
+        }
     }
     </table>

@@ -31,21 +31,67 @@ namespace PlantScape.Controllers
         }
         public ActionResult Projects()
         {
-            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            ApplicationUser user = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
             string searchId = user.Id;
-            List<Projects> projects = new List<Projects>();
-            foreach (var project in db.Projects)
+            List<ProjectsViewModel> projectList = new List<ProjectsViewModel>();
+                ProjectsViewModel projects = new ProjectsViewModel();
+                projects.Projects = GetProjects(searchId);
+                projectList.Add(projects);
+            return View(projectList);
+        }
+        private List<Projects> GetProjects(string searchId)
+        {
+            List<Projects> projectList = new List<Projects>();
+            foreach (Projects proj in db.Projects.Where(p => p.devId == searchId))
             {
-                if (searchId == project.devId)
+                if (searchId == proj.devId)
                 {
-                    projects.Add(project);
+                    projectList.Add(proj);
                 }
                 else
                 {
                     continue;
                 }
             }
-            return View(projects);
+            return projectList;
+        }
+        private List<Plants> GetPlants(string searchId)
+        {
+            List<Plants> plantList = new List<Plants>();
+            ApplicationUser user = db.Users.FirstOrDefault(u => u.Id == searchId);
+            int searchzip = user.zipCode;
+            Zone zone = db.HardinessZone.FirstOrDefault(z => z.zipcode == searchzip);
+            foreach (Plants plant in db.Plants)
+            {
+                if (zone.zone == plant.hardinessZone.ToLower())
+                {
+                    plant.favoriteList = null;
+                    plant.projectList = null;
+                    plantList.Add(plant);
+                }
+            }
+            return plantList;
+        }
+        public ActionResult AddPlants(int id)
+        {
+            ProjectViewModel project = new ProjectViewModel();
+            project.Project = db.Projects.FirstOrDefault(p => p.id == id);
+            project.Plants = GetPlants(project.Project.reqId);
+            return View(project);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        //Check Why searchPlant id is not being pushed to the back end
+        public ActionResult AddPlants(int id, [Bind(Include = "plantId")] Plants searchPlant)
+        {
+            Projects project = db.Projects.FirstOrDefault(pr => pr.id == id);
+            Plants plant = db.Plants.FirstOrDefault(pl => pl.id == searchPlant.id);
+                    db.Plants.Attach(plant);
+                    project.plantList.Add(plant);
+                    db.Entry(project).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+           
+            return RedirectToAction("AddPlants");
         }
         public ActionResult Browse()
         {
