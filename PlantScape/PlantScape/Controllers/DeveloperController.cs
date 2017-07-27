@@ -82,10 +82,10 @@ namespace PlantScape.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //Check Why searchPlant id is not being pushed to the back end
-        public ActionResult AddPlants(int id, [Bind(Include = "plantId")] Plants searchPlant)
+        public ActionResult AddPlants(int plantId, int projId)
         {
-            Projects project = db.Projects.FirstOrDefault(pr => pr.id == id);
-            Plants plant = db.Plants.FirstOrDefault(pl => pl.id == searchPlant.id);
+            Projects project = db.Projects.FirstOrDefault(pr => pr.id == projId);
+            Plants plant = db.Plants.FirstOrDefault(pl => pl.id == plantId);
                     db.Plants.Attach(plant);
                     project.plantList.Add(plant);
                     db.Entry(project).State = System.Data.Entity.EntityState.Modified;
@@ -105,17 +105,103 @@ namespace PlantScape.Controllers
         }
         public ActionResult SearchView()
         {
-            return View(db.Plants.All(item => item.botanicalName != null));
+            return View(db.Plants.ToList());
         }
-        public ActionResult SearchBy()//<===pass in the argument they want to search by and the input string
+        public ActionResult SearchBy(FormCollection form)//<===pass in the argument they want to search by and the input string
         {
-            List<Plants> searchResult = new List<Plants>();
-            foreach(Plants plant in db.Plants)
+            string selectedSearch = form["Search"].ToString();
+            string input = form["Input"].ToString();
+            return RedirectToAction("SearchResult","Developer",new { selected = selectedSearch, searchInput = input });   
+        }
+        public ActionResult SearchResult(string selected, string searchInput)
+        {
+            List<Plants> plants = new List<Plants>();
+            switch (selected)
             {
-                
+                case "Bontanical Name":
+                    foreach (Plants Plant in db.Plants)
+                    {
+                        if (Plant.botanicalName == searchInput)
+                        {
+                            plants.Add(Plant);
+                        }
+                    }
+                    return View("SearchResult",plants);
+                case "Common Name":
+                    foreach (Plants Plant in db.Plants)
+                    {
+                        if (Plant.commonName == searchInput)
+                        {
+                            plants.Add(Plant);
+                        }
+                    }
+                    return View("SearchResult", plants);
+                case "Plant Type":
+                    foreach (Plants Plant in db.Plants)
+                    {
+                        if (Plant.type == searchInput)
+                        {
+                            plants.Add(Plant);
+                        }
+                    }
+                    return View("SearchResult", plants);
+                case "Foliage Color (Fall)":
+                    foreach (Plants Plant in db.Plants)
+                    {
+                        if (Plant.fColorFall == searchInput)
+                        {
+                            plants.Add(Plant);
+                        }
+                    }
+                    return View("SearchResult", plants);
+                case "Foliage Color (Spring)":
+                    foreach (Plants Plant in db.Plants)
+                    {
+                        if (Plant.fColorSpring == searchInput)
+                        {
+                            plants.Add(Plant);
+                        }
+                    }
+                    return View("SearchResult", plants);
+                case "Flowers":
+                    foreach (Plants Plant in db.Plants)
+                    {
+                        if (Plant.flowers == searchInput)
+                        {
+                            plants.Add(Plant);
+                        }
+                    }
+                    return View("SearchResult", plants);
+                case "Hardiness Zone":
+                    foreach (Plants Plant in db.Plants)
+                    {
+                        if (Plant.hardinessZone == searchInput)
+                        {
+                            plants.Add(Plant);
+                        }
+                    }
+                    return View("SearchResult",plants);
+                case "Soil Type":
+                    foreach (Plants Plant in db.Plants)
+                    {
+                        if (Plant.soilType == Convert.ToInt32(searchInput))
+                        {
+                            plants.Add(Plant);
+                        }
+                    }
+                    return View("SearchResult", plants);
+                case "Light Requirements":
+                    foreach (Plants Plant in db.Plants)
+                    {
+                        if (Plant.lightReq == searchInput)
+                        {
+                            plants.Add(Plant);
+                        }
+                    }
+                    return View("SearchResult", plants);
+                default:
+                    return RedirectToAction("SearchView");
             }
-
-            return View(searchResult);
         }
      public ActionResult AddToFavorites(int id)
         {

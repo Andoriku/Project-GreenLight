@@ -1,0 +1,95 @@
+﻿@model IEnumerable<PlantScape.Models.Plants>
+
+@{
+    ViewBag.Title = "SearchResult";
+    Layout = "~/Views/Shared/_Layout - Developer.cshtml";
+}
+
+<h2>HardinessZoneSearch</h2>
+
+<p>
+    @Html.ActionLink("New Search", "SearchView")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.botanicalName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.commonName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fColorSpring)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fColorFall)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.flowers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.leafType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hardinessZone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.soilType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lightReq)
+        </th>
+        <th>
+            <label>Image</label>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.botanicalName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.commonName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fColorSpring)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fColorFall)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.flowers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.leafType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hardinessZone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.soilType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lightReq)
+        </td>
+        <td>
+            <a href="@Html.DisplayFor(modelItem => item.imageUrl)">View Image</a>
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id }) |
+            @Html.ActionLink("Add", "AddToFavorites", "Developer", new { id = item.id }, new { })
+        </td>
+    </tr>
+}
+
+</table>

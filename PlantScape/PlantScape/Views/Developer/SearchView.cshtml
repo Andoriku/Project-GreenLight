@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PlantScape.Models.Plants>
+@{
+    ViewBag.Title = "SearchView";
+    Layout = "~/Views/Shared/_Layout - Client.cshtml";
+}
+
+<h2>SearchView</h2>
+
+<p>Pick a search to filter by:</p>
+
+@using (Html.BeginForm("SearchBy","Developer"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.DropDownList("Search", new SelectList(new[] {
+               "Botanical Name",
+               "Common Name",
+               "Plant Type",
+               "Foliage Color (Fall)",
+               "Foliage Color (Spring)",
+               "Flowers",
+               "Hardiness Zone",
+               "Soil Type",
+               "Light Requirements" }), "Select One")
+            </div>
+        </div>
+        <div>
+            @Html.TextBox("Input","Input")
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+

@@ -310,6 +310,8 @@
     <Content Include="Views\ProjectsView\ViewQuotes.cshtml" />
     <Content Include="Views\Developer\ProjectPlants.cshtml" />
     <Content Include="Views\Developer\AddPlants.cshtml" />
+    <Content Include="Views\Developer\SearchView.cshtml" />
+    <Content Include="Views\Developer\SearchResult.cshtml" />
     <None Include="Views\Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Views\Scripts\jquery-1.10.2.js" />
     <Content Include="Views\Scripts\jquery-1.10.2.min.js" />

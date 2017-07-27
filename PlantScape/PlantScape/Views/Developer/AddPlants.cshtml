@@ -2,7 +2,7 @@
 @model PlantScape.Models.ProjectViewModel
 @{
     ViewBag.Title = "AddPlants";
-    Layout = "~/Views/Shared/_Layout - Client.cshtml";
+    Layout = "~/Views/Shared/_Layout - Developer.cshtml";
 }
 
 <h2>Add Plants to Project</h2>
@@ -15,55 +15,57 @@
     <table>
         <tr>
             <td>
-                <img src="@Html.DisplayFor(modelItem => plant.imageUrl)" alt="No Image" style="width : 100%; height: 20%" />
+                @Html.DisplayFor(modelItem => plant.id) |
             </td>
-            |
             <td>
-                @Html.DisplayFor(modelItem => plant.botanicalName)
+                <img src="@Html.DisplayFor(modelItem => plant.imageUrl)" alt="No Image" style="width : 100%; height: 20%" /> |
             </td>
-            |
+            
             <td>
-                @Html.DisplayFor(modelItem => plant.commonName)
+                @Html.DisplayFor(modelItem => plant.botanicalName) |
             </td>
-            |
+            
             <td>
-                @Html.DisplayFor(modelItem => plant.type)
+                @Html.DisplayFor(modelItem => plant.commonName) |
             </td>
-            |
+            
             <td>
-                @Html.DisplayFor(modelItem => plant.fColorSpring)
+                @Html.DisplayFor(modelItem => plant.type) |
             </td>
-            |
+            
             <td>
-                @Html.DisplayFor(modelItem => plant.fColorFall)
+                @Html.DisplayFor(modelItem => plant.fColorSpring) |
             </td>
-            |
+            
             <td>
-                @Html.DisplayFor(modelItem => plant.flowers)
+                @Html.DisplayFor(modelItem => plant.fColorFall) |
             </td>
-            |
+            
             <td>
-                @Html.DisplayFor(modelItem => plant.leafType)
+                @Html.DisplayFor(modelItem => plant.flowers) |
             </td>
-            |
+            
             <td>
-                @Html.DisplayFor(modelItem => plant.hardinessZone)
+                @Html.DisplayFor(modelItem => plant.leafType) |
             </td>
-            |
+            
             <td>
-                @Html.DisplayFor(modelItem => plant.soilType)
+                @Html.DisplayFor(modelItem => plant.hardinessZone) |
             </td>
-            |
+            
+            <td>
+                @Html.DisplayFor(modelItem => plant.soilType) |
+            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => plant.lightReq)
             </td>
         </tr>
     </table>
-    using (Html.BeginForm("AddPlants", "Developer", new { id = Model.Project.id }, FormMethod.Post, new { }))
+    using (Html.BeginForm("AddPlants", "Developer", new { projId = Model.Project.id , plantId = plant.id}, FormMethod.Post, new { }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.Hidden("plantId", Convert.ToInt32(plant.id))
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
