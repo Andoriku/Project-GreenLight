@@ -186,7 +186,6 @@ C:\Users\Andrew Jordan\Desktop\Project-GreenLight\PlantScape\PlantScape\bin\CsvH
 C:\Users\Andrew Jordan\Desktop\Project-GreenLight\PlantScape\PlantScape\obj\Debug\PlantScape.Migrations.newtables.resources
 C:\Users\Andrew Jordan\Desktop\Project-GreenLight\PlantScape\PlantScape\obj\Debug\PlantScape.csproj.GenerateResource.Cache
 C:\Users\Andrew Jordan\Desktop\Project-GreenLight\PlantScape\PlantScape\obj\Debug\PlantScape.Migrations.lostlist.resources
-C:\Users\Andrew Jordan\Desktop\Project-GreenLight\PlantScape\PlantScape\obj\Debug\PlantScape.csprojResolveAssemblyReference.cache
 C:\Users\Andrew Jordan\Desktop\Project-GreenLight\PlantScape\PlantScape\obj\Debug\PlantScape.Migrations.IsSelected.resources
 C:\Users\Andrew Jordan\Desktop\Project-GreenLight\PlantScape\PlantScape\obj\Debug\PlantScape.Migrations.Selected.resources
 C:\Users\Andrew Jordan\Desktop\Project-GreenLight\PlantScape\PlantScape\bin\roslyn\csc.exe.config
@@ -229,3 +228,4 @@ C:\Users\Andrew Jordan\Desktop\Project-GreenLight\PlantScape\PlantScape\bin\Micr
 C:\Users\Andrew Jordan\Desktop\Project-GreenLight\PlantScape\PlantScape\bin\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Andrew Jordan\Desktop\Project-GreenLight\PlantScape\PlantScape\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\Andrew Jordan\Desktop\Project-GreenLight\PlantScape\PlantScape\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Andrew Jordan\Desktop\Project-GreenLight\PlantScape\PlantScape\obj\Debug\PlantScape.Migrations.quote.resources

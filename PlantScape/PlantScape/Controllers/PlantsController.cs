@@ -62,7 +62,7 @@ namespace PlantScape.Controllers
 
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Browse","Developer");
             }
         }
         // GET: PlantViewModels/Details/5

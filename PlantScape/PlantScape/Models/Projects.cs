@@ -21,6 +21,7 @@ namespace PlantScape.Models
         public string displayImage { get; set; }
         public virtual string reqId { get; set; }
         public virtual string devId { get; set; }
+        public double Quote { get; set; }
         public virtual ICollection<Plants> plantList { get; set; }
         public string userComments { get; set; }
     }

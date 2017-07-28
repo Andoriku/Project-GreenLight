@@ -135,13 +135,16 @@ namespace PlantScape.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,projectName,image")] Projects projects)
+        public ActionResult Edit([Bind(Include = "id,projectName,image,Quote")] Projects projects)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(projects).State = EntityState.Modified;
+                Projects project = db.Projects.FirstOrDefault(p => p.id == projects.id);
+                project.Quote = projects.Quote;
+                project.projectName = project.projectName;
+                db.Entry(project).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Projects", "Developer");
             }
             return View(projects);
         }

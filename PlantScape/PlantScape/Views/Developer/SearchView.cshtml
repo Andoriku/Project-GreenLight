@@ -39,4 +39,25 @@
         </div>
     </div>
 }
+<Lable>OR</Lable>
+@using (Html.BeginForm("SearchZip", "Developer"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+           <Lable>Enter Zipcode:</Lable>
+            <div class="col-md-10">
+               @Html.TextBox("Input","Zipcode")
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
 

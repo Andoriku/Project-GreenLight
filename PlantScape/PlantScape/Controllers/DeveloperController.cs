@@ -27,7 +27,8 @@ namespace PlantScape.Controllers
         // GET: Developer
         public ActionResult Index()
         {
-            return View();
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            return View(user);
         }
         public ActionResult Projects()
         {
@@ -55,6 +56,7 @@ namespace PlantScape.Controllers
             }
             return projectList;
         }
+
         private List<Plants> GetPlants(string searchId)
         {
             List<Plants> plantList = new List<Plants>();
@@ -106,6 +108,34 @@ namespace PlantScape.Controllers
         public ActionResult SearchView()
         {
             return View(db.Plants.ToList());
+        }
+        public ActionResult SearchZip(FormCollection form)//<===pass in the argument they want to search by and the input string
+        {
+            int input = Convert.ToInt32(form["Input"]);
+            List<Plants> plantList = new List<Plants>();
+            try
+            {
+                Zone zone = db.HardinessZone.FirstOrDefault(z => z.zipcode == input);
+
+                foreach (Plants plant in db.Plants)
+                {
+                    if (zone.zone == plant.hardinessZone.ToLower())
+                    {
+                        plant.favoriteList = null;
+                        plant.projectList = null;
+                        plantList.Add(plant);
+                    }
+                }
+                return View("SearchResult", plantList);
+            }
+            catch
+            {
+                return RedirectToAction("Sorry");
+            }
+        }
+        public ActionResult Sorry()
+        {
+            return View();
         }
         public ActionResult SearchBy(FormCollection form)//<===pass in the argument they want to search by and the input string
         {

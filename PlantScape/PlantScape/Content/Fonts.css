@@ -1,0 +1,10 @@
+﻿@font-face {
+    font-family: 'Chokle';
+    src: url('../fonts/Chokle.otf') format('opentype');
+}
+body {
+}
+.Logo{
+    font-family: Chokle;
+    font-size: 35px;
+}

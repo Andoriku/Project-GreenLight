@@ -12,53 +12,65 @@
 
 @foreach (Plants plant in Model.Plants)
 {
-    <table>
+    <table class="table">
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => plant.id) |
+              <Lable>Plant Id:</Lable> @Html.DisplayFor(modelItem => plant.id)
             </td>
+            </tr>
+        <tr>
             <td>
-                <img src="@Html.DisplayFor(modelItem => plant.imageUrl)" alt="No Image" style="width : 100%; height: 20%" /> |
+                <Lable>Image:</Lable> <img src="@Html.DisplayFor(modelItem => plant.imageUrl)" alt="No Image" style="width : 100%; height: 20%" />
             </td>
-            
+            </tr>
+        <tr>
             <td>
-                @Html.DisplayFor(modelItem => plant.botanicalName) |
+                <Lable>Botanical Name:</Lable> @Html.DisplayFor(modelItem => plant.botanicalName)
             </td>
-            
+            </tr>
+        <tr>
             <td>
-                @Html.DisplayFor(modelItem => plant.commonName) |
+                <Lable>Common Name:</Lable> @Html.DisplayFor(modelItem => plant.commonName)
             </td>
-            
+            </tr>
+        <tr>
             <td>
-                @Html.DisplayFor(modelItem => plant.type) |
+                <Lable>Plant Type:</Lable> @Html.DisplayFor(modelItem => plant.type)
             </td>
-            
+        </tr>
+        <tr>
             <td>
-                @Html.DisplayFor(modelItem => plant.fColorSpring) |
+                <Lable>Plant Foliage Color (Spring):</Lable> @Html.DisplayFor(modelItem => plant.fColorSpring)
             </td>
-            
+        </tr>
+        <tr>
             <td>
-                @Html.DisplayFor(modelItem => plant.fColorFall) |
+                <Lable>Plant Foliage Color (Fall):</Lable> @Html.DisplayFor(modelItem => plant.fColorFall)
             </td>
-            
+        </tr>
+        <tr>
             <td>
-                @Html.DisplayFor(modelItem => plant.flowers) |
+                <Lable>Flower Type:</Lable> @Html.DisplayFor(modelItem => plant.flowers)
             </td>
-            
+        </tr>
+        <tr>
             <td>
-                @Html.DisplayFor(modelItem => plant.leafType) |
+                <Lable>Leaf Type:</Lable> @Html.DisplayFor(modelItem => plant.leafType)
             </td>
-            
+        </tr>
+        <tr>
             <td>
-                @Html.DisplayFor(modelItem => plant.hardinessZone) |
+                <Lable>Hardiness Zone:</Lable> @Html.DisplayFor(modelItem => plant.hardinessZone)
             </td>
-            
+        </tr>
+        <tr>
             <td>
-                @Html.DisplayFor(modelItem => plant.soilType) |
+                <Lable>Soil Type*:</Lable> @Html.DisplayFor(modelItem => plant.soilType)
             </td>
-            
+        </tr>
+        <tr>
             <td>
-                @Html.DisplayFor(modelItem => plant.lightReq)
+                <Lable>Light Requirement:</Lable> @Html.DisplayFor(modelItem => plant.lightReq)
             </td>
         </tr>
     </table>
@@ -69,7 +81,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Add Plant" class="btn btn-default" />
             </div>
         </div>
     }

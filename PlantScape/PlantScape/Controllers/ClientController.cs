@@ -25,11 +25,12 @@ namespace PlantScape.Controllers
                 _userManager = value;
             }
         }
-        
+
         // GET: Customer
         public ActionResult Index()
         {
-            return View();
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            return View(user);
         }
         public ActionResult Browse()
         {
@@ -72,28 +73,22 @@ namespace PlantScape.Controllers
             return View();
         }
 
-        // GET: Customer/Create
-        public ActionResult Create()
+        public ActionResult EditComment(int id)
         {
-            return View();
+            Projects project = db.Projects.Find(id);
+            return View(project);
         }
-
-        // POST: Customer/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult EditComment([Bind(Include = "userComments")] Projects search, int id)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            
+            Projects project = db.Projects.FirstOrDefault(p => p.id == id);
+            project.userComments = search.userComments;
+            db.Entry(project).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("ViewQuotes","ProjectsView");
         }
-
         // GET: Customer/Edit/5
         public ActionResult Edit(int id)
         {
