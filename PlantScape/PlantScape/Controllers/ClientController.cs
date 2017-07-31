@@ -32,6 +32,10 @@ namespace PlantScape.Controllers
             ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
             return View(user);
         }
+        public ActionResult About()
+        {
+            return View();
+        }
         public ActionResult Browse()
         {
             return View(db.Plants.ToList());

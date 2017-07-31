@@ -1,9 +1,21 @@
 ﻿@model  PlantScape.Models.ApplicationUser
+<head>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout - Developer.cshtml";
 }
 
-<h2>Welcome @Model.firstName!</h2>
+</head>
+
+<h2>Welcome @Model.firstName</h2>
+
+<p>In order for your clients to request projects, you must give them your developer code. Diplayed below is your code.</p>
+
+<p>Your Code is</p>
+<p>@Model.Id</p>
+
+<p>@Html.ActionLink("Check Your Projects Here","Projects","Developer",new { }, new {@class="Header" })</p>
+<p>@Html.ActionLink("Get Started By Browsing Plants Here", "Browse", "Developer", new { }, new { @class = "Header" })</p>
+
 
 

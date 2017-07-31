@@ -30,6 +30,10 @@ namespace PlantScape.Controllers
             ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
             return View(user);
         }
+        public ActionResult About()
+        {
+            return View();
+        }
         public ActionResult Projects()
         {
             ApplicationUser user = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
@@ -242,7 +246,7 @@ namespace PlantScape.Controllers
         public ActionResult AddToFavorites([Bind(Include = "id")] Plants search)
         {
             ApplicationUser user = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
-            Plants plant = db.Plants.FirstOrDefault(Plant => Plant.id == search.id);
+            Plants plant  = db.Plants.FirstOrDefault(Plant => Plant.id == search.id);
             db.Plants.Attach(plant);
             user.favoriteList.Add(plant);
             db.Entry(user).State = System.Data.Entity.EntityState.Modified;

@@ -1,28 +1,32 @@
 ﻿@model IEnumerable<PlantScape.Models.Plants>
-
+<head>
 @{
     ViewBag.Title = "Browse";
     Layout = "~/Views/Shared/_Layout - Developer.cshtml";
 }
-
-<h2>Browse Plants</h2>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="~/Content/Fonts.css" type="text/css" rel="stylesheet" />
+</head>
+<h2 class="PageName">Browse Plants</h2>
 
 <p>
-    @Html.ActionLink("Add a New Plant to the Database", "Create")
+    @Html.ActionLink("Add a New Plant to the Database", "Create","Plants",new { },new { @class="Header" })
 </p>
 
 <p>OR</p>
-
+<p class="Header">Add a CSV file to the Database. learn more here.</p>
 @using (Html.BeginForm("Index", "Plants", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <input type="file" name="file" />
     <input type="submit" value="OK" />
 }
+<br />
 <p>
-    @Html.ActionLink("Search for specific plants", "SearchView")
+    @Html.ActionLink("Search for specific plants", "SearchView","Developer", new { }, new { @class = "Header" })
 </p>
 <br />
-<table class="table">
+<table class="table-hover">
     <tr>
         <th>
             Image
@@ -67,7 +71,7 @@
     {
         <tr>
             <td>
-                <img src="@Html.DisplayFor(modelItem => item.imageUrl)" alt="No Image" style="width : auto; height: 20%" />
+                <a href="@Html.DisplayFor(modelItem => item.imageUrl)"><img src="@Html.DisplayFor(modelItem => item.imageUrl)" alt="View Image" style="width : auto; height: 20% ;max-height: 10%" /></a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.botanicalName)

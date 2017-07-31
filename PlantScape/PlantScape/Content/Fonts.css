@@ -2,9 +2,21 @@
     font-family: 'Chokle';
     src: url('../fonts/Chokle.otf') format('opentype');
 }
+@font-face {
+    font-family: 'MostlyMono';
+    src: url('../fonts/MostlyMono.ttf') format('truetype');
+}
 body {
 }
 .Logo{
     font-family: Chokle;
-    font-size: 35px;
+    font-size: 38px;
+}
+.Header {
+      font-family: MostlyMono;
+      font-size: 20px;
+}
+.PageName {
+    font-family: Chokle;
+    font-size: 30px;
 }

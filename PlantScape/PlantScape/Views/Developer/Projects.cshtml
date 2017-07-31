@@ -10,7 +10,7 @@
 <p>
     @Html.ActionLink("Create New", "Create","Projects")
 </p>
-<table class="table">
+<table class="table-hover">
     <tr>
         <th>
          <Lable>Project Name</Lable>
@@ -39,7 +39,7 @@
                 @Html.DisplayFor(modelItem => proj.projectName)
             </td>
             <td>
-                <img src="@Html.DisplayFor(modelItem => proj.displayImage)" alt="No Image" style="width : auto; max-height: 30%" />
+                <a href="@Html.DisplayFor(modelItem => proj.displayImage)"><img src="@Html.DisplayFor(modelItem => proj.displayImage)" alt="No Image" style="width : auto; max-height: 50%" /></a>
             </td>
             <td>
 <table class="table"> 
@@ -48,7 +48,7 @@
 
             <tr>
                 <td>
-                    <img src="@Html.DisplayFor(modelItem => plant.imageUrl)" alt="No Image" style="width : auto; height: 15%; max-height: 300px; max-width: 200px" />
+                    <a href="@Html.DisplayFor(modelItem => plant.imageUrl)"><img src="@Html.DisplayFor(modelItem => plant.imageUrl)" alt="No Image" style="width : auto; height: 20% ;max-height: 10%" /></a> 
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => plant.botanicalName)

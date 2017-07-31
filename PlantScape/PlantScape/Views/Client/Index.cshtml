@@ -4,6 +4,10 @@
     Layout = "~/Views/Shared/_Layout - Client.cshtml";
 }
 
-<h2>Welcome @Model.firstName!</h2>
+<h2>Welcome @Model.firstName</h2>
+
+<p>@Html.ActionLink("Get Started By Browsing Plants Here", "Browse", "Client", new { }, new { @class = "Header" })</p>
+<p>@Html.ActionLink("Begin a new Quote Request Here", "CreateProject", "Client", new { }, new { @class = "Header" })</p>
+
 
 
